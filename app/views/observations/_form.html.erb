@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.label :restaurant_id %><br>
+    <%= f.select :restaurant_id, Restaurant.all.collect {|p| [ p.name, p.id ] }, { include_blank: false } %>
+  </div>
   <div class="field">
     <%= f.label :date_time %><br>
     <%= f.datetime_select :date_time %>

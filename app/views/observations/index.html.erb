@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Restaurant</th>
       <th>Date time</th>
       <th>Line size</th>
       <th></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @observations.each do |observation| %>
       <tr>
+        <td><%= Restaurant.find(observation.restaurant_id).name %></td>
         <td><%= observation.date_time %></td>
         <td><%= observation.line_size %></td>
         <td><%= link_to 'Show', observation %></td>

@@ -69,6 +69,6 @@ class ObservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def observation_params
-      params.require(:observation).permit(:date_time, :line_size)
+      params.require(:observation).permit(:date_time, :line_size, :restaurant_id)
     end
 end
