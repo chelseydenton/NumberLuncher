@@ -1,4 +1,6 @@
 Numberluncher::Application.routes.draw do
+  resources :restaurants
+
   resources :users
 
   resources :observations
