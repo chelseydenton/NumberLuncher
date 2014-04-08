@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe "observations/index" do
   before(:each) do
-    assign(:restaurant, 
-      stub_model(Restaurant,
-        :name => 'Chipotle'))
+    FactoryGirl.create(:restaurant) 
     assign(:observations, [
       stub_model(Observation,
         :line_size => 1,

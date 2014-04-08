@@ -2,8 +2,10 @@ require 'spec_helper'
 
 describe "observations/show" do
   before(:each) do
+    FactoryGirl.create(:restaurant) 
     @observation = assign(:observation, stub_model(Observation,
-      :line_size => 1
+      :line_size => 1,
+      :restaurant_id => 1
     ))
   end
 
