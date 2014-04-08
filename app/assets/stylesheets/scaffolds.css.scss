@@ -1,9 +1,12 @@
 body {
-  background-color: #fff;
+  background-color: #ebeef2;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'Asap', verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  /* leo's edits */
+  margin: 0 auto;
+  text-align:center;
 }
 
 p, ol, ul, td {
@@ -18,16 +21,16 @@ pre {
   font-size: 11px;
 }
 
-a {
+/*a {
   color: #000;
   &:visited {
-    color: #666;
+    color: gray;
   }
   &:hover {
     color: #fff;
     background-color: #000;
   }
-}
+}*/
 
 div {
   &.field, &.actions {
@@ -66,4 +69,23 @@ div {
     font-size: 12px;
     list-style: square;
   }
+}
+
+/* leo's edits */
+.footer_link
+{
+        text-decoration: none;
+        color: gray; 
+}
+
+.footer_link:hover
+{
+        text-decoration: none;
+        color: black;
+}
+
+.footer_link:visited
+{
+        text-decoration: none;
+        color: gray;
 }

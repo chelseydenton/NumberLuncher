@@ -4,6 +4,11 @@
 
 
 $grayMediumLight: #eaeaea;
+$nl_neon_purple: #ab214a;
+$nl_deep_purple: #760043;
+$nl_soft_purple: #885a8d;
+$nl_off_white: #ebeef2;
+$nl_blue: #002d74; 
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -19,6 +24,8 @@ html {
 
 body {
   padding-top: 60px;
+  font-family: 'Asap', sans-serif;
+  background-color:#ebeef2;
 }
 
 section {
@@ -76,12 +83,25 @@ p {
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
+  color: #ebeef2;
   &:hover {
-    color: white;
+    color: gray;
     text-decoration: none;
   }
 }
 
+.navbar-inner
+{
+        a
+        {
+                color: #ebeef2;
+                &:hover
+                {
+                        color:gray;
+                        text-decoration:none;
+                }
+        }        
+}
 /* footer */
 
 footer {
@@ -174,3 +194,21 @@ input {
 }
 
 
+/* leo's edits */
+.footer_link
+{
+        text-decoration: none;
+        color: gray; 
+}
+
+.footer_link:hover
+{
+        text-decoration: none;
+        color: black;
+}
+
+.footer_link:visited
+{
+        text-decoration: none;
+        color: gray;
+}
