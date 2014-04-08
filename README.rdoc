@@ -3,3 +3,4 @@
 NumberLuncher is a lunch line analysis web app that uses crowd-sourced data.
 Written using Ruby on Rails for CS 369.
 
+Heroku : numberluncher.herokuapp.com
