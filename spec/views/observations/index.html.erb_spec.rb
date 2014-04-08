@@ -2,12 +2,17 @@ require 'spec_helper'
 
 describe "observations/index" do
   before(:each) do
+    assign(:restaurant, 
+      stub_model(Restaurant,
+        :name => 'Chipotle'))
     assign(:observations, [
       stub_model(Observation,
-        :line_size => 1
+        :line_size => 1,
+        :restaurant_id => 1
       ),
       stub_model(Observation,
-        :line_size => 1
+        :line_size => 1,
+        :restaurant_id => 1
       )
     ])
   end
