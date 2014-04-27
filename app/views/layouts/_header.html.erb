@@ -7,10 +7,12 @@
         <ul class="nav pull-right">
           <% if signed_in? %>
             <li>
-              <%= link_to "Sign out", signout_path, method: "delete" %>
+              <%= link_to "Sign out", signout_path, {:method => 'delete', :style => 'padding 20px;'} %>
             </li>
           <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
+            <li>
+              <%= link_to "Sign in", signin_path, {:style => 'padding: 20px'} %>
+            </li>
           <% end %>
         </ul>
       </nav>

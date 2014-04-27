@@ -85,12 +85,14 @@ p {
   color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  /*padding-top: 9px;*/
+  padding: 18px;
   font-weight: bold;
   line-height: 1;
   color: #ebeef2;
   &:hover {
     color: gray;
+    background-color: #ebeef2;
     text-decoration: none;
   }
 }
