@@ -1,14 +1,8 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @restaurant.name%> : <%= @restaurant.location %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @restaurant.location %>
-</p>
-
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<div class="span8">
+	  <ol class="observations">
+	      <%= render @observations %>
+	   </ol>
+	<%= will_paginate @observations %>
+</div>
