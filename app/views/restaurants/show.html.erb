@@ -1,8 +1,8 @@
 <h1><%= @restaurant.name%> : <%= @restaurant.location %></h1>
 
 <div class="span8">
-	  <ol class="observations">
+	  <ul class="observations">
 	      <%= render @observations %>
-	   </ol>
+	   </ul>
 	<%= will_paginate @observations %>
 </div>
