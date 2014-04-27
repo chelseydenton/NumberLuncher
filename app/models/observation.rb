@@ -4,4 +4,5 @@ class Observation < ActiveRecord::Base
   validates :restaurant_id, presence: true
   validates :line_size, presence: true
   #validates :user_id, presence: true
+  default_scope :order => 'created_at desc'
 end
