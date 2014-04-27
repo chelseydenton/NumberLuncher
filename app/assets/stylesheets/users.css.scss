@@ -1,3 +1,24 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.users
+{
+  //background-color: pink;
+  //float: left;
+
+  list-style: none;
+
+  li
+  {
+          overflow: auto;
+          margin: 10px;
+          text-align: left;
+          font-family: Asap, sans-serif;
+          font-size: 1.5em;
+
+          a
+          {
+            //padding-bottom: 10px;
+          }
+  }
+}

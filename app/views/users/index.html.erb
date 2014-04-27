@@ -3,8 +3,11 @@
 
 <%= will_paginate %>
 
-<ul class="users">
-  <%= render @users %>
+
+<ul class="users list-group">
+  <% for user in @users %>
+    <%= render user %>
+  <% end %>
 </ul>
 
 <%= will_paginate %>
