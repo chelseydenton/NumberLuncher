@@ -54,7 +54,7 @@ class ObservationsController < ApplicationController
   def destroy
     @observation.destroy
     respond_to do |format|
-      format.html { redirect_to observations_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end
