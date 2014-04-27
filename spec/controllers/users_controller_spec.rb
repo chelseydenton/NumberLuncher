@@ -133,13 +133,6 @@ describe UsersController do
         assigns(:user).should eq(user)
       end
 
-      it "re-renders the 'edit' template" do
-        user = User.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
-        put :update, {:id => user.to_param, :user => { "email" => "invalid value" }}, valid_session
-        response.should render_template("edit")
-      end
     end
   end
 
