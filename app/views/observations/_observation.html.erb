@@ -1,6 +1,6 @@
 <li class="list-group-item our_row">
   <span> <%= Restaurant.find(observation.restaurant_id).name %></span>
-  <span class="content"> line Size was <%= observation.line_size %>, </span>
+  <span class="content"> line size was <%= observation.line_size %>, </span>
   <span class="timestamp">
      <%= time_ago_in_words(observation.created_at) %> ago.
   </span>
