@@ -4,4 +4,12 @@
         <%= render 'shared/user_info' %>
       </section>
     </aside>
+
+    <div class="span8">
+	   <h3>Restaurants</h3>
+	      <ol class="restaurants">
+	        <%= render @restaurants %>
+	      </ol>
+	   <%= will_paginate @restaurants %>
+	</div>
   </div>
