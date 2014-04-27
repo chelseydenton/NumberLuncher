@@ -13,9 +13,9 @@
 	</div>
     <% if @user.observations.any? %>
       <h3>Observations (<%= @user.observations.count %>)</h3>
-      <ol class="observations">
+      <ul class="observations list-group">
         <%= render @observations %>
-      </ol>
+      </ul>
       <%= will_paginate @observations %>
     <% end %>
   </div>
