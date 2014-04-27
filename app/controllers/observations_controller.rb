@@ -1,4 +1,5 @@
 class ObservationsController < ApplicationController
+  include SessionsHelper
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
 
   # GET /observations
@@ -25,9 +26,11 @@ class ObservationsController < ApplicationController
   # POST /observations.json
   def create
     @observation = Observation.new(observation_params)
+    @observation.user_id = current_user.id
 
     respond_to do |format|
       if @observation.save
+
         format.html { redirect_to @observation, notice: 'Observation was successfully created.' }
         format.json { render action: 'show', status: :created, location: @observation }
       else
