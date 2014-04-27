@@ -1,0 +1,10 @@
+<li>
+  <span> <%= Restaurant.find(observation.restaurant_id).name %></span>
+  <span class="content"> Line Size was <%= observation.line_size %>, </span>
+  <span class="timestamp">
+     <%= time_ago_in_words(observation.created_at) %> ago.
+  </span>
+  <% if current_user?(observation.user) %>
+  	<%= render 'shared/post_delete_link', object: observation %>
+  <% end %>
+</li>

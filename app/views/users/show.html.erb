@@ -5,4 +5,13 @@
       <%= render 'shared/user_info', current_user: @user  %>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.observations.any? %>
+      <h3>Observations (<%= @user.observations.count %>)</h3>
+      <ol class="observations">
+        <%= render @observations %>
+      </ol>
+      <%= will_paginate @observations %>
+    <% end %>
+  </div>
 </div>
