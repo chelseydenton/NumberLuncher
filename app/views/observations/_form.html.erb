@@ -15,10 +15,6 @@
     <%= f.select :restaurant_id, Restaurant.all.collect {|p| [ p.name, p.id ] }, { include_blank: false } %>
   </div>
   <div class="field">
-    <%= f.label 'Date' %><br>
-    <%= f.datetime_select :date_time %>
-  </div>
-  <div class="field">
     <%= f.label :line_size %><br>
     <%= f.number_field :line_size %>
   </div>

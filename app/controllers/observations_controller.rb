@@ -25,18 +25,13 @@ class ObservationsController < ApplicationController
   # POST /observations
   # POST /observations.json
   def create
-    @observation = Observation.new(observation_params)
-    @observation.user_id = current_user.id
-
-    respond_to do |format|
-      if @observation.save
-
-        format.html { redirect_to @observation, notice: 'Observation was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @observation }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @observation.errors, status: :unprocessable_entity }
-      end
+    @observation = current_user.observations.build(observation_params)
+    @observation.date_time = Time.now
+    if @observation.save
+      flash[:success] = "Observation created!"
+      redirect_to current_user
+    else
+      render 'static_pages/home'
     end
   end
 

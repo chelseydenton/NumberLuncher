@@ -5,7 +5,12 @@
       <%= render 'shared/user_info', current_user: @user  %>
     </section>
   </aside>
+
   <div class="span8">
+  	<h3>Make Observation</h3>
+  	<div class="row our_row">
+	  <%= render 'observations/form' %>
+	</div>
     <% if @user.observations.any? %>
       <h3>Observations (<%= @user.observations.count %>)</h3>
       <ol class="observations">

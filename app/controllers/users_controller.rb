@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @observation  = current_user.observations.build
     @observations = @user.observations.paginate(page: params[:page])
   end
 
