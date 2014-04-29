@@ -16,7 +16,6 @@ describe "User pages" do
     before { visit user_path(user) }
 
     it { should have_content(user.email) }
-    it { should have_title(user.email) }
   end
 
   describe "signup" do

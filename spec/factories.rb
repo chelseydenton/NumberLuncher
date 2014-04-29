@@ -12,3 +12,11 @@ FactoryGirl.define do
     location "Union South"
   end
 end
+
+FactoryGirl.define do
+	factory :observation do
+		line_size 5
+		restaurant
+		user
+	end
+end

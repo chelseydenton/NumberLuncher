@@ -31,7 +31,7 @@ class ObservationsController < ApplicationController
       flash[:success] = "Observation created!"
       redirect_to current_user
     else
-      render 'static_pages/home'
+      render 'new'
     end
   end
 
