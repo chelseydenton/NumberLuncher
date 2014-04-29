@@ -19,11 +19,15 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe ObservationsController do
+  include SessionsHelper
 
   # This should return the minimal set of attributes required to create a valid
   # Observation. As you add validations to Observation, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "date_time" => "2014-04-01 18:57:25", "restaurant_id" => 1, "line_size" => 5 } }
+  let(:user) { FactoryGirl.create(:user)}
+  let(:restaurant) { FactoryGirl.create(:restaurant)}
+  before { sign_in user }
+  let(:valid_attributes) { { "date_time" => "2014-04-01 18:57:25", "restaurant_id" => restaurant.id, "line_size" => 5, "user_id" => user.id } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -75,9 +79,9 @@ describe ObservationsController do
         assigns(:observation).should be_persisted
       end
 
-      it "redirects to the created observation" do
+      it "redirects to user page" do
         post :create, {:observation => valid_attributes}, valid_session
-        response.should redirect_to(Observation.last)
+        response.should redirect_to(current_user)
       end
     end
 
@@ -92,7 +96,7 @@ describe ObservationsController do
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Observation.any_instance.stub(:save).and_return(false)
-        post :create, {:observation => { "date_time" => "invalid value" }}, valid_session
+        post :create, {:observation => { "line_size" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -150,10 +154,10 @@ describe ObservationsController do
       }.to change(Observation, :count).by(-1)
     end
 
-    it "redirects to the observations list" do
+    it "redirects to the user page" do
       observation = Observation.create! valid_attributes
       delete :destroy, {:id => observation.to_param}, valid_session
-      response.should redirect_to(observations_url)
+      response.should redirect_to(root_url)
     end
   end
 

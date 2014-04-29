@@ -3,6 +3,10 @@ FactoryGirl.define do
     email    "michael@example.com"
     password "foobar"
     password_confirmation "foobar"
+
+    factory :admin do
+      admin true
+    end
   end
 end
 
@@ -11,4 +15,12 @@ FactoryGirl.define do
     name    "Ginger Root"
     location "Union South"
   end
+end
+
+FactoryGirl.define do
+	factory :observation do
+		line_size 5
+		restaurant
+		user
+	end
 end
