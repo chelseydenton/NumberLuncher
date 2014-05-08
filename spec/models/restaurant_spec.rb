@@ -16,6 +16,9 @@ describe Restaurant do
 
   it { should respond_to(:relationships) }
 
+  # it { should respond_to(:reverse_relationships) }
+
+  it { should respond_to(:users) }
 
   it { should be_valid }
 
@@ -28,5 +31,7 @@ describe Restaurant do
     before { @restaurant.location = nil }
     it { should_not be_valid }
   end
+
+  
 
 end
