@@ -6,5 +6,10 @@ class CreateRelationships < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :relationships, :restaurant_id
+    add_index :relationships, :user_id
+    add_index :relationships, [:restaurant_id, :user_id], unique: true
+
   end
 end

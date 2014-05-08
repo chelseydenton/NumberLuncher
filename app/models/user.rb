@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :observations
+  has_many :observations # keep the data if user is deleted
+  has_many :relationships, foreign_key: "user_id", dependent: :destroy
 
   before_save { email.downcase! }
   before_create :create_remember_token
