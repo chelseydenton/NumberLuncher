@@ -68,6 +68,11 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def followed_restaurants
+    @user = User.find(params[:id])
+    @my_restos = @user.followed_restaurants
+  end
+
   private
 
     def user_params

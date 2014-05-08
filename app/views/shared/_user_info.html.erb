@@ -3,4 +3,6 @@
   <%= current_user.email %>
   <br/>
 <%= link_to "view observations", current_user %>
+<br/>
+<%= link_to "my restaurants", followed_restaurants_user_path(current_user.id) %>
 </h1>

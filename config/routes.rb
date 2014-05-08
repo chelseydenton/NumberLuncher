@@ -1,7 +1,11 @@
 Numberluncher::Application.routes.draw do
   resources :restaurants
 
-  resources :users
+  resources :users do
+    member do
+      get :followed_restaurants
+    end
+  end
 
   resources :observations
 
