@@ -16,6 +16,7 @@ describe Restaurant do
 
   it { should respond_to(:relationships) }
 
+
   it { should be_valid }
 
   describe 'when name is not present' do
