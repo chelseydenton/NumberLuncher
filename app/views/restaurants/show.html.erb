@@ -1,5 +1,33 @@
 <h1><%= @restaurant.name%> : <%= @restaurant.location %></h1>
 
+<script type="text/javascript" charset="utf-8">
+$(function() {
+	new Highcharts.Chart({
+		chart: {
+			renderTo: "observations_chart"
+		},
+		title: {
+			text: "Line Length Observations"
+		},
+		xAxis: {
+			type: "datetime"
+		},
+		yAxis: {
+			title: {
+				text: "Length of Line (# of people)"
+			}
+		},
+		series: [{
+			pointInterval: <%= 1.day * 1000 %>,
+			pointStart: <%= 3.weeks.ago.to_i * 1000 %>,
+			data: <%= (3.weeks.ago.to_date..Date.today).map {
+				|date| Restaurant.average_on(date, @restaurant.id).to_f
+			}.inspect  %>
+		}]
+	});
+});
+</script>
+<div class="highchart" id="observations_chart" style="width:560px; height:300px;"></div>
 <div class="span8">
 	  <ul class="observations">
 	      <%= render @observations %>
