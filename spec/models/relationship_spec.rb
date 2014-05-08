@@ -19,4 +19,14 @@ describe Relationship do
 
     end
 
+  describe "when restaurant id is not present" do
+    before { relationship.restaurant_id = nil }
+    it { should_not be_valid }
+  end
+
+  describe "when user id is not present" do
+    before { relationship.user_id = nil }
+    it { should_not be_valid }
+  end
+
 end
