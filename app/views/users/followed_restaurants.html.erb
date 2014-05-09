@@ -1,3 +1,5 @@
-<h1><%= @user.email %>'s Restaurants</h1>
+<h1><%= link_to @user.email, root_path, style: 'color:#949494' %>'s Restaurants</h1>
 
 <%= render @my_restos %>
+
+<% #= button_to %>
