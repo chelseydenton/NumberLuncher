@@ -1,5 +1,10 @@
 <h1><%= link_to @user.email, root_path, style: 'color:#949494' %>'s Restaurants</h1>
 
+<% #= render '/relationships/form' %>
+
+<div>
+  <%= link_to '<button type="button" class="btn btn-primary btn-lg">Add Restaurants</button>'.html_safe, restaurants_path %>
+</div>
+
 <%= render @my_restos %>
 
-<% #= button_to %>

@@ -73,6 +73,11 @@ class UsersController < ApplicationController
     @my_restos = @user.followed_restaurants
   end
 
+
+  def add_restaurant
+
+  end
+
   private
 
     def user_params
