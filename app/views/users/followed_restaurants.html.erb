@@ -2,9 +2,7 @@
 
 <% #= render '/relationships/form' %>
 
-<div>
-  <%= link_to '<button type="button" class="btn btn-primary btn-lg">Add Restaurants</button>'.html_safe, restaurants_path %>
-</div>
+<%= link_to '<button type="button" class="btn btn-primary btn-lg" style="margin: 15px;">Add Restaurants</button>'.html_safe, restaurants_path %>
 
 <%= render @my_restos %>
 
