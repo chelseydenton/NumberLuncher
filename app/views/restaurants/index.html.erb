@@ -7,6 +7,7 @@
       <div class="row">
         <div class="col-md-4">
           <h4><%= link_to resto.name, restaurant_path(resto) %></h4>
+          <h5><%= resto.observations.count %> <%= 'observation'.pluralize(resto.observations.count) %></h5>
         </div>
         <div class="col-md-4">
           <%= resto.location %>
