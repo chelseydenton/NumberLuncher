@@ -2,7 +2,12 @@
 
 <% #= render '/relationships/form' %>
 
-<%= link_to '<button type="button" class="btn btn-primary btn-lg" style="margin: 15px;">Add Restaurants</button>'.html_safe, restaurants_path %>
+<%= link_to '<button type="button" class="btn btn-primary btn-lg" style="margin-bottom: 15px;">Add Restaurants</button>'.html_safe, restaurants_path %>
 
-<%= render @my_restos %>
+<% #= render @my_restos %>
 
+<ul class="list-group our_row">
+  <%= render @my_restos %>
+</ul>
+
+<% #= will_paginate @my_restos %>
