@@ -1,8 +1,8 @@
 <h1><%= @restaurant.name%> : <%= @restaurant.location %></h1>
-
 <div class="span8">
-	  <ul class="observations">
-	      <%= render @observations %>
-	   </ul>
+    <%= link_to '<h4>Back to All Restaurants</h4>'.html_safe, restaurants_path %>
+	<ul class="observations">
+	   <%= render @observations %>
+	</ul>
 	<%= will_paginate @observations %>
 </div>
