@@ -19,8 +19,17 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    @resto = Relationship.find(params[:id]).followed
+    #@resto = Relationship.find(params[:id][:restaurant_id]).followed
+    #@resto = Restaurant.find(params[:restaurant_id])
+    #puts "hello!!!"
+    #puts params
+
+    some_rel = Relationship.find(params[:id])
+
+    @resto = Restaurant.find(some_rel[:restaurant_id])
+
     current_user.unfollow!(@resto)
+
     redirect_to restaurants_path
   end
 end
