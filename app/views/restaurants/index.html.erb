@@ -6,16 +6,23 @@
     <li class="list-group-item">
       <div class="row">
         <div class="col-md-4">
-          <h4><%= link_to resto.name, restaurants_path(resto) %></h4>
+          <h4><%= link_to resto.name, restaurant_path(resto) %></h4>
         </div>
         <div class="col-md-4">
           <%= resto.location %>
         </div>
         <div class="col-md-4">
-          <%= link_to '<button type="button" class="btn btn-primary btn-default" style="margin-top: 5px;">Follow</button>'.html_safe, root_path %>
-          <!-- these paths are only temporary -->
+
+          <%= form_for (current_user.relationships.build(restaurant_id: resto.id)), remote: true do |f| %>
+
+            <div><%= f.hidden_field :restaurant_id %></div>
+
+            <%= f.submit 'Follow', class: 'btn btn-primary btn-default', style: 'margin-top: 5px; width: inherit;' %>
+
+          <% end %>
+
           <hr/>
-          <%= link_to '<button type="button" class="btn btn-danger btn-default">Error?</button>'.html_safe, root_path %>
+          <%= mail_to 'admin@example.com', '<button type="button" class="btn btn-danger btn-default">Error?</button>'.html_safe, subject: "[NUMBERLUNCHER] #{resto.name}--#{resto.id} ERROR", body: "Please update the following about #{resto.name} at #{resto.location} with ID #{resto.id}:\n" %>
         </div>
       </div>
     </li>
