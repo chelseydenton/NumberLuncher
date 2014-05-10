@@ -17,6 +17,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.13.1'
   gem 'better_errors'
+  gem 'debugger'
 end
 
 group :test do

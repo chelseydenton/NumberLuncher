@@ -14,11 +14,26 @@
         </div>
         <div class="col-md-4">
 
-          <%= form_for (current_user.relationships.build(restaurant_id: resto.id)), remote: true do |f| %>
+          <% if !current_user.following?(resto) %> 
 
-            <div><%= f.hidden_field :restaurant_id %></div>
+            <%= form_for (current_user.relationships.build(restaurant_id: resto.id)) do |f| %>
 
-            <%= f.submit 'Follow', class: 'btn btn-primary btn-default', style: 'margin-top: 5px; width: inherit;' %>
+              <div><%= f.hidden_field :restaurant_id %></div>
+
+              <%= f.submit 'Follow', class: 'btn btn-primary btn-default', style: 'margin-top: 5px; width: inherit;' %>
+
+            <% end %>
+
+          <% else %>
+
+            <%= form_for(current_user.relationships.find_by(restaurant_id: resto.id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+
+              <%= f.submit 'Unfollow', class: 'btn btn-warning btn-default', style: 'margin-top: 5px; width: inherit;' %>
+
+            <% end %>
+
 
           <% end %>
 
