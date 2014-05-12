@@ -19,6 +19,7 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe RestaurantsController do
+  include SessionsHelper
 
   # This should return the minimal set of attributes required to create a valid
   # Restaurant. As you add validations to Restaurant, be sure to
@@ -29,6 +30,11 @@ describe RestaurantsController do
   # in order to pass any filters (e.g. authentication) defined in
   # RestaurantsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+
+  let(:user) { FactoryGirl.create(:user) }
+  before(:each) do
+      sign_in user
+  end
 
   describe "GET index" do
     it "assigns all restaurants as @restaurants" do
