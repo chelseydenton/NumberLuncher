@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include SessionsHelper
   before_action :signed_in_user, 
-    only: [:index, :edit, :update, :destroy]
+    only: [:index, :show, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   before_action :signed_in_bad_action, only: [:new, :create]
