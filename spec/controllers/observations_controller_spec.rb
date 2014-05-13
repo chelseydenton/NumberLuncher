@@ -97,7 +97,7 @@ describe ObservationsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Observation.any_instance.stub(:save).and_return(false)
         post :create, {:observation => { "line_size" => "invalid value" }}, valid_session
-        response.should render_template("new")
+        response.should redirect_to current_user #render_template("new")
       end
     end
   end
