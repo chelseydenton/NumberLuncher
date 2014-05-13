@@ -32,8 +32,8 @@ class ObservationsController < ApplicationController
       flash[:success] = "Observation created!"
       redirect_to current_user
     else
-      #flash[:error] = @observation.errors
-      redirect_to root_path
+      flash[:danger] = @observation.errors.full_messages
+      redirect_to current_user
     end
   end
 
