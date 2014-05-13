@@ -32,7 +32,8 @@ class ObservationsController < ApplicationController
       flash[:success] = "Observation created!"
       redirect_to current_user
     else
-      render 'new'
+      #flash[:error] = @observation.errors
+      redirect_to root_path
     end
   end
 
