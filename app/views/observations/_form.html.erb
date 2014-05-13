@@ -12,7 +12,7 @@
   <% end %>
   <div class="field">
     <%= f.label :restaurant_id %><br>
-    <%= f.select :restaurant_id, Restaurant.all.collect {|p| [ p.name, p.id ] }, { include_blank: false } %>
+    <%= f.select :restaurant_id, current_user.followed_restaurants.collect {|p| [ p.name, p.id ] }, { include_blank: false } %>
   </div>
   <div class="field">
     <%= f.label :line_size %><br>
