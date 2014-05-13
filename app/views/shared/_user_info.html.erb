@@ -2,8 +2,8 @@
 <h1>
   <%= current_user.email %>
   <br/>
-<%= link_to "view observations", current_user %>
+<%= link_to "Observations", current_user %>
 <br/>
-<%= link_to "view restaurants", followed_restaurants_user_path(current_user.id) %>
+<%= link_to "Restaurants", followed_restaurants_user_path(current_user.id) %>
 <% #= link_to "view restaurants", root_path %>
 </h1>
