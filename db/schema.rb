@@ -40,22 +40,6 @@ ActiveRecord::Schema.define(version: 20140508035618) do
     t.datetime "updated_at"
   end
 
-  create_table "restaurants_users", id: false, force: true do |t|
-    t.integer "restaurant_id"
-    t.integer "user_id"
-  end
-
-  create_table "resto_rels", force: true do |t|
-    t.integer  "restaurant_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "resto_rels", ["restaurant_id", "user_id"], name: "index_resto_rels_on_restaurant_id_and_user_id", unique: true
-  add_index "resto_rels", ["restaurant_id"], name: "index_resto_rels_on_restaurant_id"
-  add_index "resto_rels", ["user_id"], name: "index_resto_rels_on_user_id"
-
   create_table "users", force: true do |t|
     t.string   "email"
     t.datetime "created_at"

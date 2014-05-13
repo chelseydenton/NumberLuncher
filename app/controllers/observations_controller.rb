@@ -1,6 +1,7 @@
 class ObservationsController < ApplicationController
   include SessionsHelper
   before_action :signed_in_user
+  before_action :admin_user, only: [:index, :show, :edit]
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
 
   # GET /observations
