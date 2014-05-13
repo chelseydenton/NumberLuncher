@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   include SessionsHelper
   before_action :signed_in_user
+  before_action :admin_user, only: [:edit]
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   # GET /restaurants
