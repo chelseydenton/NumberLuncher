@@ -13,6 +13,14 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:relationships) }
+  it { should respond_to(:followed_restaurants) }
+  #it { should respond_to(:feed) }
+
+  it { should respond_to(:following?) }
+  it { should respond_to(:follow!) }
+  it { should respond_to(:unfollow!) }
+
 
   it { should be_valid }
 
@@ -97,11 +105,27 @@ describe "email address with mixed case" do
     end
   end
 
-describe "remember token" do
+  describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
 
+  describe "following" do
+    let(:resto) { FactoryGirl.create(:restaurant) }
+    before do
+      @user.save
+      @user.follow!(resto)
+    end
+
+    it { should be_following(resto) }
+    its(:followed_restaurants) { should include(resto) }
   
 
+    describe "and unfollowing" do
+      before { @user.unfollow!(resto) }
+
+      it { should_not be_following(resto) }
+      its(:followed_restaurants) { should_not include(resto) }
+    end
+  end
 end

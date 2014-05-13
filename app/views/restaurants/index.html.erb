@@ -1,28 +1,48 @@
-<h1>Listing restaurants</h1>
+<h1>All Restaurants</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="row">
+<ul class="restaurants list-group our_row">
+  <% @restaurants.each do |resto| %>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-4">
+          <h4><%= link_to resto.name, restaurant_path(resto) %></h4>
+          <h5><%= resto.observations.count %> <%= 'observation'.pluralize(resto.observations.count) %></h5>
+        </div>
+        <div class="col-md-4">
+          <%= resto.location %>
+        </div>
+        <div class="col-md-4">
 
-  <tbody>
-    <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.location %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <% if !current_user.following?(resto) %> 
+
+            <%= form_for (current_user.relationships.build(restaurant_id: resto.id)) do |f| %>
+
+              <div><%= f.hidden_field :restaurant_id %></div>
+
+              <%= f.submit 'Follow', class: 'btn btn-primary btn-default', style: 'margin-top: 5px; width: inherit;' %>
+
+            <% end %>
+
+          <% else %>
+
+            <%= form_for(current_user.relationships.find_by(restaurant_id: resto.id),html: { method: :delete },remote: true) do |f| %>
+
+              <%= f.submit 'Unfollow', class: 'btn btn-warning btn-default', style: 'margin-top: 5px; width: inherit;' %>
+
+            <% end %>
+
+
+          <% end %>
+
+          <hr/>
+          <%= mail_to 'powderstummer@gmail.com', '<button type="button" class="btn btn-danger btn-default">Error?</button>'.html_safe, subject: "[NUMBERLUNCHER] #{resto.name}--#{resto.id} ERROR", body: "Please update the following about #{resto.name} at #{resto.location} with ID #{resto.id}:\n" %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+</div>
 
 <br>
 

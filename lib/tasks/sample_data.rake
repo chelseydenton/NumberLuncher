@@ -3,7 +3,9 @@ namespace :db do
   task populate: :environment do
     make_users
     #make_microposts
-    #make_relationships
+    make_restaurants
+    make_relationships
+
   end
 end
 
@@ -21,4 +23,31 @@ def make_users
                  password: password,
                  password_confirmation: password)
   end
+end
+
+
+def make_restaurants
+  10.times do
+    name = Faker::Company.name
+    loc = Faker::Address.street_address
+
+    Restaurant.create!(
+        name: name,
+        location: loc
+      )
+  end
+
+def make_relationships
+
+  Random.srand
+
+  User.all.each do |user|
+    Restaurant.all.each do |resto|
+      if (Random.rand > 0.50)
+        user.follow!(resto)
+      end
+    end
+  end
+end
+
 end

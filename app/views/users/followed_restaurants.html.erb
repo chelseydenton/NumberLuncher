@@ -1,0 +1,13 @@
+<h1><%= link_to @user.email, root_path, style: 'color:#949494' %>'s Restaurants</h1>
+
+<% #= render '/relationships/form' %>
+
+<%= link_to '<button type="button" class="btn btn-primary btn-lg" style="margin-bottom: 15px;">Modify Restaurants</button>'.html_safe, restaurants_path %>
+
+<% #= render @my_restos %>
+
+<ul class="list-group our_row">
+  <%= render @my_restos %>
+</ul>
+
+<% #= will_paginate @my_restos %>

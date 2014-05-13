@@ -43,8 +43,9 @@ $(function() {
 <div class="our_row" id="observations_chart" style="width:560px; height:300px;"></div>
 <br/>
 <div class="span8">
-	  <ul class="observations">
-	      <%= render @observations %>
-	   </ul>
+    <%= link_to '<h4>Back to All Restaurants</h4>'.html_safe, restaurants_path %>
+	<ul class="observations">
+	   <%= render @observations %>
+	</ul>
 	<%= will_paginate @observations %>
 </div>

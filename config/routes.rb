@@ -1,17 +1,26 @@
 Numberluncher::Application.routes.draw do
   resources :restaurants
 
-  resources :users
+  resources :users do
+    member do
+      get :followed_restaurants
+    end
+  end
 
   resources :observations
 
   resources :sessions, only: [:new, :create, :destroy]
+
+
+  resources :relationships, only: [:create, :destroy]
 
   root 'static_pages#home'
 
   match '/signup',  to: 'users#new',  via:  'get'
   match '/signin',  to: 'sessions#new',   via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+  
+  #match '/user_add_restaurant', to: 'users#add_restaurant', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

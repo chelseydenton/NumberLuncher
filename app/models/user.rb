@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :observations
+  has_many :observations # keep the data if user is deleted
+  has_many :relationships, foreign_key: "user_id", dependent: :destroy
+  has_many :followed_restaurants, through: :relationships, source: :restaurant
 
   before_save { email.downcase! }
   before_create :create_remember_token
@@ -17,6 +19,18 @@ class User < ActiveRecord::Base
 
   def User.hash(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def following?(some_resto)
+    self.relationships.find_by(restaurant_id: some_resto.id)
+  end
+
+  def follow!(some_resto)
+    self.relationships.create!(restaurant_id: some_resto.id)
+  end
+
+  def unfollow!(some_resto)
+    self.relationships.find_by(restaurant_id: some_resto.id).destroy
   end
 
   private
